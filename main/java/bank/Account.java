@@ -1,13 +1,16 @@
 package bank;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Account {
     public String holderName; // instance variables and fields...
     public String accountNumber;
     private Date openingDate;
-    public final int RATE_OF_INTEREST=10;
+    public final int RATE_OF_INTEREST = 10;
     private double balance;
+    private List<Transaction> transactions = new ArrayList<>();
 
     public Account(String holderName, String accountNumber, double balance, Date openingDate) {
         this.holderName = holderName;
@@ -17,16 +20,12 @@ public class Account {
     }
 
     public double getBalance() {
-        return getBalance(10);
+        return getBalance(0);
     }
 
-
-    @Override
-    public String toString() {
-        return holderName + ", " + accountNumber + ", " + balance;
-    }
-
-    public void credit(double amount) {
+    public void credit(double amount, Date transactionDate) {
+        Transaction creditAmount = new Transaction("jskah",transactionDate,100);
+        transactions.add(creditAmount);
         this.balance += amount;
 
     }
@@ -37,11 +36,22 @@ public class Account {
         }
 
     }
-    public double getBalance(int years){
-        return balance*RATE_OF_INTEREST*years /100 +balance;
+
+    public double getBalance(int years) {
+        return balance * RATE_OF_INTEREST * years / 100 + balance;
     }
 
+    public List<Transaction> getPassBook() {
 
+        return transactions;
+
+
+    }
+
+    @Override
+    public String toString() {
+        return holderName + ", " + accountNumber + ", " + balance;
+    }
 }
 
 //Entity something which changes with time.
