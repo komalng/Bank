@@ -11,12 +11,14 @@ public class Account {
     public final int RATE_OF_INTEREST = 10;
     private double balance;
     private List<Transaction> transactions = new ArrayList<>();
+    private static int counter;
 
     public Account(String holderName, String accountNumber, double balance, Date openingDate) {
         this.holderName = holderName;
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.openingDate = openingDate;
+        this.counter++;
     }
 
     public double getBalance() {
@@ -36,6 +38,11 @@ public class Account {
             Transaction debitAmount = new Transaction(accountNumber, transactionDate, -amount);
             transactions.add(debitAmount);
         }
+
+    }
+
+    public static int  getCounter(){
+        return counter;
 
     }
 
