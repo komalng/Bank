@@ -33,7 +33,7 @@ public class Account {
     public void debit(double amount, Date transactionDate) {
         if (amount < balance) {
             this.balance -= amount;
-            Transaction debitAmount = new Transaction(accountNumber, transactionDate, amount);
+            Transaction debitAmount = new Transaction(accountNumber, transactionDate, -amount);
             transactions.add(debitAmount);
         }
 

@@ -22,4 +22,9 @@ public class Transaction {
                 Objects.equals(accountNumber, that.accountNumber) &&
                 Objects.equals(date, that.date);
     }
+    public String toString() {
+        return ", " + accountNumber + ", " + date+" "+amount;
+    }
 }
+
+
