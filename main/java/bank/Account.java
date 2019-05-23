@@ -24,13 +24,15 @@ public class Account {
     }
 
     public void credit(double amount, Date transactionDate) {
-        Transaction creditAmount = new Transaction("jskah",transactionDate,100);
+        Transaction creditAmount = new Transaction(accountNumber, transactionDate, amount);
         transactions.add(creditAmount);
         this.balance += amount;
 
     }
 
-    public void debit(double amount) {
+    public void debit(double amount, Date transactionDate) {
+        Transaction debitAmount = new Transaction(accountNumber, transactionDate, amount);
+        transactions.add(debitAmount);
         if (amount < balance) {
             this.balance -= amount;
         }
@@ -42,10 +44,7 @@ public class Account {
     }
 
     public List<Transaction> getPassBook() {
-
         return transactions;
-
-
     }
 
     @Override
